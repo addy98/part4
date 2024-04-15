@@ -9,16 +9,20 @@ const blogSchema = new mongoose.Schema({
   likes: {
     type: Number,
     default: 0
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 })
 
 const mongoUrl = process.env.MONGODB_URI
 mongoose.connect(mongoUrl)
     .then(() => {
-        console.log('connected to MongoDB')
+        console.log('connected to blogList.blogs')
     })
     .catch(error => {
-        console.log(`error connecting to MongoDB: ${error.message}`)
+        console.log(`error connecting to blogList.blogs: ${error.message}`)
     })
 
 // transform returned documents with configurable options in setter of schema
